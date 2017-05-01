@@ -1,26 +1,76 @@
 {% extends "templates/base.html" %}
 {% block content %}
-<h1>Check Hotels</h1>
-<form method="post" action="">
-	<div class="form-group">
-		<label for="inp_destination_code">Destination:</label>
-		<input type="text" class="form-control" name="destination_code" id="inp_destination_code" />
-	</div>
-	<div class="form-group">
-		<label for="inp_checkin">Checkin:</label>
-		<input type="text" class="form-control" name="checkin" id="inp_checkin" />
-	</div>
-	<div class="form-group">
-		<label for="inp_checkout">Checkout:</label>
-		<input type="text" class="form-control" name="checkout" id="inp_checkout" />
-	</div>
-	<div class="form-group">
-		<input type="submit" class="form-control" id="inp_submit" />
-	</div>
-</form>
-<ul>
-	{% for hotel in result.hotels %}
-		<li>{{ hotel.hotelCode }} - {{ hotel.rates }}</li>
-	{% endfor %}
-</ul>
+<div class="container-fluid">
+  <div class="row">
+  <div class="page-header">
+  	<h1>Search Destination <small>Find available hotels in you dream destination</small></h1>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+    <form method="post" action="" class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="inp_destination_code">Destination:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="destination_code" value="928b37" id="inp_destination_code" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="inp_pax">Pax:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="pax" value="2" id="inp_pax" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="inp_checkin">Checkin:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="checkin" value="2017-06-12" id="inp_checkin" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="inp_checkout">Checkout:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="checkout" value="2017-06-15" id="inp_checkout" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="inp_currency">Currency:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="currency" value="USD" id="inp_currency" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="inp_nationality">Nationality:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="nationality" value="US" id="inp_nationality" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-primary">Search Hotels</button>
+			</div>
+		</div>
+	</form>
+    </div>
+    <div class="col-md-8">
+	    <ul class="list-group">
+		{% for hotel in result.hotels %}
+			<li class="list-group-item">{{ hotel.hotelCode }}
+				<ul class="list-group">
+				{% for rate in hotel.rates %}
+				<li class="list-group-item">
+				{% for room in rate.rooms %}
+					{{ room.roomDescription }} 
+				{% endfor %}
+				<strong>{{ rate.rate }} {{ rate.currency }}</strong>
+				</li>
+				{% endfor %}
+				</ul>
+			</li>
+		{% endfor %}
+		</ul>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

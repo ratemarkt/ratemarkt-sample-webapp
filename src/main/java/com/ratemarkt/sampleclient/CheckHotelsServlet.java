@@ -10,12 +10,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ratemarkt.connectors.ratemarkt.RatemarktConfig;
 import com.ratemarkt.connectors.ratemarkt.RatemarktConnector;
 import com.ratemarkt.models.CheckHotelsQuery;
 import com.ratemarkt.models.CheckHotelsResult;
 import com.ratemarkt.models.ImmutableCheckHotelsQuery;
-import com.ratemarkt.models.ImmutablePax;
 import com.ratemarkt.models.Pax;
 
 public class CheckHotelsServlet extends BaseServlet {
@@ -30,17 +28,17 @@ public class CheckHotelsServlet extends BaseServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RatemarktConfig config = new RatemarktConfig();
-		config.setApiKey("YOUR_API_KEY");
-		config.setBaseUrl("http://localhost:8080/api/v1");
+		RatemarktConnector connector = RatemarktService.getConnector();
 
-		RatemarktConnector connector = new RatemarktConnector(config);
+		String destinationCode = req.getParameter("destination_code");
+		LocalDate checkin = LocalDate.parse(req.getParameter("checkin"));
+		LocalDate checkout = LocalDate.parse(req.getParameter("checkout"));
+		Currency currency = Currency.getInstance(req.getParameter("currency"));
+		String nationality = req.getParameter("nationality");
+		Pax pax = Pax.fromPaxString(req.getParameter("pax"));
 
-		Pax pax = ImmutablePax.builder().numberOfAdults(2).build();
-
-		CheckHotelsQuery query = ImmutableCheckHotelsQuery.builder().addHotelCodes("193a7b", "ed6681", "0aef99")
-				.checkin(LocalDate.parse("2017-06-12")).checkout(LocalDate.parse("2017-06-15")).addPaxes(pax)
-				.nationality("us").currency(Currency.getInstance("USD")).build();
+		CheckHotelsQuery query = ImmutableCheckHotelsQuery.builder().destinationCode(destinationCode).checkin(checkin)
+				.checkout(checkout).addPaxes(pax).nationality(nationality).currency(currency).build();
 
 		CheckHotelsResult result = connector.checkHotels(null, query);
 

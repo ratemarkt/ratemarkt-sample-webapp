@@ -6,6 +6,21 @@
 
 	<display-name>Ratemarkt Sample Client</display-name>
 
+
+	<listener>
+		<listener-class>com.ratemarkt.sampleclient.AppListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>ExceptionHandlerFilter</filter-name>
+		<filter-class>com.ratemarkt.sampleclient.ExceptionHandlerFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>ExceptionHandlerFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<servlet>
 		<servlet-name>CheckHotelsServlet</servlet-name>
 		<servlet-class>com.ratemarkt.sampleclient.CheckHotelsServlet</servlet-class>
