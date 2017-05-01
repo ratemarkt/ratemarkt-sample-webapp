@@ -1,0 +1,18 @@
+{% extends "templates/base.html" %}
+{% block content %}
+<h1>Check Hotels</h1>
+<form>
+	<div class="form-group">
+		<label for="inp_destination_code">Destination:</label>
+		<input type="text" class="form-control" name="destination_code" id="inp_destination_code" />
+	</div>
+	<div class="form-group">
+		<label for="inp_checkin">Checkin:</label>
+		<input type="text" class="form-control" name="checkin" id="inp_checkin" />
+	</div>
+	<div class="form-group">
+		<label for="inp_checkout">Checkout:</label>
+		<input type="text" class="form-control" name="checkout" id="inp_checkout" />
+	</div>
+</form>
+{% endblock %}

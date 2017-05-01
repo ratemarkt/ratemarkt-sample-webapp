@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<display-name>Ratemarkt Sample Client</display-name>
+
+	<servlet>
+		<servlet-name>CheckHotelsServlet</servlet-name>
+		<servlet-class>com.ratemarkt.sampleclient.CheckHotelsServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CheckHotelsServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CheckHotelServlet</servlet-name>
+		<servlet-class>com.ratemarkt.sampleclient.CheckHotelServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CheckHotelServlet</servlet-name>
+		<url-pattern>/checkhotel/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CheckRateServlet</servlet-name>
+		<servlet-class>com.ratemarkt.sampleclient.CheckRateServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CheckRateServlet</servlet-name>
+		<url-pattern>/checkrate/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BookRateServlet</servlet-name>
+		<servlet-class>com.ratemarkt.sampleclient.BookRateServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BookRateServlet</servlet-name>
+		<url-pattern>/bookrate</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CheckBookingServlet</servlet-name>
+		<servlet-class>com.ratemarkt.sampleclient.CheckBookingServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CheckBookingServlet</servlet-name>
+		<url-pattern>/checkbooking/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CancelBookingServlet</servlet-name>
+		<servlet-class>com.ratemarkt.sampleclient.CancelBookingServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CancelBookingServlet</servlet-name>
+		<url-pattern>/cancelbooking</url-pattern>
+	</servlet-mapping>
+
+</web-app>  
