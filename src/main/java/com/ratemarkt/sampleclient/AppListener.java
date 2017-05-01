@@ -24,6 +24,10 @@ public class AppListener implements ServletContextListener {
 
 		String apiKey = System.getProperty("com.ratemarkt.sampleclient.apiKey");
 
+		if (apiKey == null) {
+			throw new IllegalArgumentException("Api key is missing");
+		}
+
 		config.setApiKey(apiKey);
 		config.setBaseUrl(baseUrl);
 

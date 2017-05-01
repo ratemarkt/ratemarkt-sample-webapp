@@ -10,7 +10,9 @@ public class RatemarktService {
 	private static RatemarktConnector connector;
 
 	public static void init(RatemarktConfig config) {
-		assert RatemarktService.config != null : "Ratemarkt Service already initied";
+		if (config != null) {
+			throw new IllegalStateException("Ratemarkt Service already initied");
+		}
 		RatemarktService.config = config;
 	}
 
