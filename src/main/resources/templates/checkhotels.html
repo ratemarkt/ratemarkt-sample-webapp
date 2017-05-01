@@ -1,7 +1,7 @@
 {% extends "templates/base.html" %}
 {% block content %}
 <h1>Check Hotels</h1>
-<form>
+<form method="post" action="">
 	<div class="form-group">
 		<label for="inp_destination_code">Destination:</label>
 		<input type="text" class="form-control" name="destination_code" id="inp_destination_code" />
@@ -14,5 +14,13 @@
 		<label for="inp_checkout">Checkout:</label>
 		<input type="text" class="form-control" name="checkout" id="inp_checkout" />
 	</div>
+	<div class="form-group">
+		<input type="submit" class="form-control" id="inp_submit" />
+	</div>
 </form>
+<ul>
+	{% for hotel in result.hotels %}
+		<li>{{ hotel.hotelCode }} - {{ hotel.rates }}</li>
+	{% endfor %}
+</ul>
 {% endblock %}
