@@ -5,15 +5,17 @@ import com.ratemarkt.connectors.ratemarkt.RatemarktConnector;
 
 public class RatemarktService {
 
+	private static boolean inited;
+
 	private static RatemarktConfig config;
 
 	private static RatemarktConnector connector;
 
 	public static void init(RatemarktConfig config) {
-		if (config != null) {
-			throw new IllegalStateException("Ratemarkt Service already initied");
+		if (!inited) {
+			RatemarktService.config = config;
+			inited = true;
 		}
-		RatemarktService.config = config;
 	}
 
 	public static RatemarktConnector getConnector() {

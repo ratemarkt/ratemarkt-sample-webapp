@@ -1,76 +1,110 @@
 {% extends "templates/base.html" %}
 {% block content %}
 <div class="container-fluid">
-  <div class="row">
-  <div class="page-header">
-  	<h1>Search Destination <small>Find available hotels in you dream destination</small></h1>
-  </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-    <form method="post" action="" class="form-horizontal">
-		<div class="form-group">
-			<label class="col-sm-2 control-label" for="inp_destination_code">Destination:</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="destination_code" value="928b37" id="inp_destination_code" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label" for="inp_pax">Pax:</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="pax" value="2" id="inp_pax" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label" for="inp_checkin">Checkin:</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="checkin" value="2017-06-12" id="inp_checkin" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label" for="inp_checkout">Checkout:</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="checkout" value="2017-06-15" id="inp_checkout" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label" for="inp_currency">Currency:</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="currency" value="USD" id="inp_currency" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label" for="inp_nationality">Nationality:</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="nationality" value="US" id="inp_nationality" />
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-primary">Search Hotels</button>
-			</div>
-		</div>
-	</form>
+    <div class="row">
+        <div class="page-header">
+            <h1>Search Destination <small>Find available hotels in you dream destination</small></h1>
+        </div>
     </div>
-    <div class="col-md-8">
-	    <ul class="list-group">
-		{% for hotel in result.hotels %}
-			<li class="list-group-item">{{ hotel.hotelCode }}
-				<ul class="list-group">
-				{% for rate in hotel.rates %}
-				<li class="list-group-item">
-				{% for room in rate.rooms %}
-					{{ room.roomDescription }} 
-				{% endfor %}
-				<strong>{{ rate.rate }} {{ rate.currency }}</strong>
-				</li>
-				{% endfor %}
-				</ul>
-			</li>
-		{% endfor %}
-		</ul>
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post" action="" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inp_destination_code">Destination:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="destination_code" value="928b37" id="inp_destination_code" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inp_pax">Pax:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="pax" value="2" id="inp_pax" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inp_checkin">Checkin:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="checkin" value="2017-06-12" id="inp_checkin" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inp_checkout">Checkout:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="checkout" value="2017-06-15" id="inp_checkout" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inp_currency">Currency:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="currency" value="USD" id="inp_currency" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inp_nationality">Nationality:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nationality" value="US" id="inp_nationality" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Search Hotels</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8">
+        {% for hotel in result.hotels %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a href="/checkhotel/?hotel_code={{ hotel.hotelCode }}&checkin={{ checkin }}&checkout={{ checkout }}&nationality={{ nationality }}&currency={{ currency }}&pax={{ pax }}&">({{ hotel.hotelCode }}) {{ hotel.hotelName }} / {{ hotel.destinationName }}</a>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Room Description</th>
+                                <th>Board Name</th>
+                                <th>Nonrefundable</th>
+                                <th>Rate Type</th>
+                                <th>Rate</th>
+                                <th>Cancellation Policy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for rate in hotel.rates %}
+                            <tr>
+                                <td>{% for room in rate.rooms %} {{ room.roomDescription }} {% endfor %}</td>
+                                <td>{{ rate.boardName }}</td>
+                                <td>{{ rate.nonrefundable }}</td>
+                                <td>{{ rate.rateType }}</td>
+                                <td>{{ rate.rate }} {{ rate.currency }}</td>
+                                <td>
+                                    {% if rate.cancellationPolicies %}
+                                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".cp_modal_{{ hotel.hotelCode }}_{{ loop.index }}">Show Policies</button>
+                                    <div class="modal fade cp_modal_{{ hotel.hotelCode }}_{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                                        <div class="modal-dialog modal-sm" role="document">
+                                            <div class="modal-content">
+                                                <ul class="list-group">
+                                                {% for policy in rate.cancellationPolicies %}
+                                                    <li class="list-group-item">Penalty: {{ policy.amount }} {{ rate.currency }}, From Date: {{ policy.fromDate }}</li>
+                                                {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}

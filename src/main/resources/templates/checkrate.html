@@ -1,0 +1,55 @@
+{% extends "templates/base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="page-header">
+            <h1>{{ result.hotel.hotelName }} <small>{{ result.hotel.destinationName }}</small></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+			<table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Room Description</th>
+                        <th>Board Name</th>
+                        <th>Nonrefundable</th>
+                        <th>Rate Type</th>
+                        <th>Rate</th>
+                        <th>Cancellation Policy</th>
+                        <th>Book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rate in result.hotel.rates %}
+                    <tr>
+                        <td>{% for room in rate.rooms %} {{ room.roomDescription }} {% endfor %}</td>
+                        <td>{{ rate.boardName }}</td>
+                        <td>{{ rate.nonrefundable }}</td>
+                        <td>{{ rate.rateType }}</td>
+                        <td>{{ rate.rate }} {{ rate.currency }}</td>
+                        <td>
+                            {% if rate.cancellationPolicies %}
+                            <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".cp_modal_{{ result.hotel.hotelCode }}_{{ loop.index }}">Show Policies</button>
+                            <div class="modal fade cp_modal_{{ result.hotel.hotelCode }}_{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <ul class="list-group">
+                                        {% for policy in rate.cancellationPolicies %}
+                                            <li class="list-group-item">Penalty: {{ policy.amount }} {{ rate.currency }}, From Date: {{ policy.fromDate }}</li>
+                                        {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </td>
+                        <td><a class="btn btn-sm btn-primary" href="/bookrate?rate_key={{ rate.rateKey }}">Book Rate</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

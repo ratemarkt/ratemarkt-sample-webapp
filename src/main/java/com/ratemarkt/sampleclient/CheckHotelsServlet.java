@@ -28,7 +28,6 @@ public class CheckHotelsServlet extends BaseServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RatemarktConnector connector = RatemarktService.getConnector();
 
 		String destinationCode = req.getParameter("destination_code");
 		LocalDate checkin = LocalDate.parse(req.getParameter("checkin"));
@@ -40,10 +39,17 @@ public class CheckHotelsServlet extends BaseServlet {
 		CheckHotelsQuery query = ImmutableCheckHotelsQuery.builder().destinationCode(destinationCode).checkin(checkin)
 				.checkout(checkout).addPaxes(pax).nationality(nationality).currency(currency).build();
 
+		RatemarktConnector connector = RatemarktService.getConnector();
+
 		CheckHotelsResult result = connector.checkHotels(null, query);
 
 		Map<String, Object> context = new Hashtable<String, Object>();
 		context.put("result", result);
+		context.put("checkin", checkin);
+		context.put("checkout", checkout);
+		context.put("currency", currency);
+		context.put("nationality", nationality);
+		context.put("pax", pax.toPaxString());
 
 		TemplateUtil.renderTemplate("templates/checkhotels.html", context, resp);
 	}
