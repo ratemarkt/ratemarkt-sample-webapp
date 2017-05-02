@@ -24,3 +24,9 @@ $ mvn jetty:run\
   -Dcom.ratemarkt.sampleclient.apiKey="YOUR_API_KEY"
 ```
 
+Screenshots
+
+![Step 1](https://raw.githubusercontent.com/ratemarkt/ratemarkt-sample-client/master/media/step_1.jpg)
+![Step 2](https://raw.githubusercontent.com/ratemarkt/ratemarkt-sample-client/master/media/step_2.jpg)
+![Step 3](https://raw.githubusercontent.com/ratemarkt/ratemarkt-sample-client/master/media/step_3.jpg)
+![Step 4](https://raw.githubusercontent.com/ratemarkt/ratemarkt-sample-client/master/media/step_4.jpg)
