@@ -1,4 +1,4 @@
-package com.ratemarkt.sampleclient;
+package com.ratemarkt.sample;
 
 import java.io.IOException;
 import java.time.LocalDate;

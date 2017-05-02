@@ -4,16 +4,16 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 	version="2.4">
 
-	<display-name>Ratemarkt Sample Client</display-name>
+	<display-name>Ratemarkt Sample WebApp</display-name>
 
 
 	<listener>
-		<listener-class>com.ratemarkt.sampleclient.AppListener</listener-class>
+		<listener-class>com.ratemarkt.sample.AppListener</listener-class>
 	</listener>
 
 	<filter>
 		<filter-name>ExceptionHandlerFilter</filter-name>
-		<filter-class>com.ratemarkt.sampleclient.ExceptionHandlerFilter</filter-class>
+		<filter-class>com.ratemarkt.sample.ExceptionHandlerFilter</filter-class>
 	</filter>
 
 	<filter-mapping>
@@ -23,7 +23,7 @@
 
 	<servlet>
 		<servlet-name>CheckHotelsServlet</servlet-name>
-		<servlet-class>com.ratemarkt.sampleclient.CheckHotelsServlet</servlet-class>
+		<servlet-class>com.ratemarkt.sample.CheckHotelsServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
@@ -34,7 +34,7 @@
 
 	<servlet>
 		<servlet-name>CheckHotelServlet</servlet-name>
-		<servlet-class>com.ratemarkt.sampleclient.CheckHotelServlet</servlet-class>
+		<servlet-class>com.ratemarkt.sample.CheckHotelServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
@@ -45,7 +45,7 @@
 
 	<servlet>
 		<servlet-name>BookRateServlet</servlet-name>
-		<servlet-class>com.ratemarkt.sampleclient.BookRateServlet</servlet-class>
+		<servlet-class>com.ratemarkt.sample.BookRateServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
@@ -56,7 +56,7 @@
 
 	<servlet>
 		<servlet-name>CheckBookingServlet</servlet-name>
-		<servlet-class>com.ratemarkt.sampleclient.CheckBookingServlet</servlet-class>
+		<servlet-class>com.ratemarkt.sample.CheckBookingServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
@@ -67,7 +67,7 @@
 
 	<servlet>
 		<servlet-name>CancelBookingServlet</servlet-name>
-		<servlet-class>com.ratemarkt.sampleclient.CancelBookingServlet</servlet-class>
+		<servlet-class>com.ratemarkt.sample.CancelBookingServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 

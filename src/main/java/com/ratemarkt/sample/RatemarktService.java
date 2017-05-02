@@ -1,4 +1,4 @@
-package com.ratemarkt.sampleclient;
+package com.ratemarkt.sample;
 
 import com.ratemarkt.connectors.ratemarkt.RatemarktConfig;
 import com.ratemarkt.connectors.ratemarkt.RatemarktConnector;

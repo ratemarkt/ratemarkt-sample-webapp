@@ -1,4 +1,4 @@
-package com.ratemarkt.sampleclient;
+package com.ratemarkt.sample;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -14,15 +14,15 @@ public class AppListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
-		logger.info("Sample client starting...");
+		logger.info("Sample webapp starting...");
 		RatemarktConfig config = new RatemarktConfig();
-		String baseUrl = System.getProperty("com.ratemarkt.sampleclient.baseUrl");
+		String baseUrl = System.getProperty("com.ratemarkt.sample.baseUrl");
 
 		if (baseUrl == null) {
 			baseUrl = "http://localhost:8080/api/v1";
 		}
 
-		String apiKey = System.getProperty("com.ratemarkt.sampleclient.apiKey");
+		String apiKey = System.getProperty("com.ratemarkt.sample.apiKey");
 
 		if (apiKey == null) {
 			throw new IllegalArgumentException("Api key is missing");
@@ -36,6 +36,6 @@ public class AppListener implements ServletContextListener {
 
 	@Override
 	public void contextDestroyed(ServletContextEvent servletContextEvent) {
-		logger.info("Sample client stopped...");
+		logger.info("Sample webapp stopped...");
 	}
 }

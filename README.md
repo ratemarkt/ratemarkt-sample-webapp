@@ -1,4 +1,4 @@
-# Ratemarkt Sample Client Application
+# Ratemarkt Sample Web Application
 
 ## Usage
 
@@ -9,19 +9,19 @@ $ git clone https://github.com/ratemarkt/ratemarkt-sdk.git
 $ cd ratemarkt-sdk
 $ mvn install
 ```
-Once completed, clone this sample client
+Once completed, clone this sample webapp
 
 ```
-$ git clone https://github.com/ratemarkt/ratemarkt-sample-client.git
-$ cd ratemarkt-sample-client
+$ git clone https://github.com/ratemarkt/ratemarkt-sample-webapp.git
+$ cd ratemarkt-sample-webapp
 ```
 
 Now you're ready to run the app using your own Ratemarkt API key.
 
 ```
 $ mvn jetty:run\
-  -Dcom.ratemarkt.sampleclient.baseUrl="RATEMARKT_API_URL"\
-  -Dcom.ratemarkt.sampleclient.apiKey="YOUR_API_KEY"
+  -Dcom.ratemarkt.sample.baseUrl="RATEMARKT_API_URL"\
+  -Dcom.ratemarkt.sample.apiKey="YOUR_API_KEY"
 ```
 
 Screenshots

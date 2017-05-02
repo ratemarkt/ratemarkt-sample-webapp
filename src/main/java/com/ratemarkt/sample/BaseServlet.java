@@ -1,4 +1,4 @@
-package com.ratemarkt.sampleclient;
+package com.ratemarkt.sample;
 
 import javax.servlet.http.HttpServlet;
 
