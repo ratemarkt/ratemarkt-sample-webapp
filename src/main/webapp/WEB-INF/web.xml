@@ -40,18 +40,7 @@
 
 	<servlet-mapping>
 		<servlet-name>CheckHotelServlet</servlet-name>
-		<url-pattern>/checkhotel/*</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>CheckRateServlet</servlet-name>
-		<servlet-class>com.ratemarkt.sampleclient.CheckRateServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>CheckRateServlet</servlet-name>
-		<url-pattern>/checkrate/*</url-pattern>
+		<url-pattern>/checkhotel</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -73,7 +62,7 @@
 
 	<servlet-mapping>
 		<servlet-name>CheckBookingServlet</servlet-name>
-		<url-pattern>/checkbooking/*</url-pattern>
+		<url-pattern>/checkbooking</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

@@ -1,0 +1,95 @@
+{% extends "templates/base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="page-header">
+            <h1>Booking Details</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Booking Details</div>
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#"> <img alt="64x64" class="media-object" data-src="holder.js/64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWJjODcyZWVjNyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YmM4NzJlZWM3Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40Njg3NSIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true" style="width: 64px; height: 64px;"> </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ result.booking.hotelName }}</h4>
+                            <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>
+                            88 Colin P. Kelly Street, San Francisco, CA 94107.
+                        </div>
+                    </div>
+                </div>
+                <table class="table">
+                    <tr>
+                        <th>Status:</th>
+                        <td>{{ result.booking.status }}</td>
+                    </tr>
+                    <tr>
+                        <th>Booking Ref:</th>
+                        <td>{{ result.booking.bookingRef }}</td>
+                    </tr>
+                    <tr>
+                        <th>Holder:</th>
+                        <td>{{ result.booking.holder.firstName }} {{ result.booking.holder.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Hotel:</th>
+                        <td>{{ result.booking.hotel.hotelName }} ({{ result.booking.hotel.hotelCode }})</td>
+                    </tr>
+                    <tr>
+                        <th>Destination:</th>
+                        <td style="text-transform: capitalize">{{ result.booking.hotel.destinationName }} ({{ result.booking.hotel.destinationCode }})</td>
+                    </tr>
+                    <tr>
+                        <th>Checkin:</th>
+                        <td style="text-transform: capitalize">{{ result.booking.checkin }}</td>
+                    </tr>
+                    <tr>
+                        <th>Checkout:</th>
+                        <td style="text-transform: capitalize">{{ result.booking.checkout }}</td>
+                    </tr>
+                    <tr>
+                        <th>Room:</th>
+                        <td>{{ result.booking.occupancy[0].room.roomDescription }}</td>
+                    </tr>
+                    <tr>
+                        <th>Board Type:</th>
+                        <td>{{ result.booking.boardName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nonrefundable:</th>
+                        <td>{{ result.booking.nonrefundable }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pay At Hotel:</th>
+                        <td>{{ result.booking.rateType == 'DIRECT' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Total:</th>
+                        <td><h3>{{ result.booking.total }} <small>{{ result.booking.currency }}</small></h3></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form method="post" action="/cancelbooking" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inp_bookingref">Booking Ref:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="booking_ref" value="{{ result.booking.bookingRef }}" id="inp_bookingref" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-danger">Cancel Booking</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
